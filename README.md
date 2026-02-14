@@ -1,6 +1,6 @@
 # AutoCrop Anniversary
 
-A fork of [AutoCrop by Chromie](https://www.curseforge.com/wow/addons/autocrop) updated for WoW Classic Anniversary Edition.
+Created by Zev based off a fork of [AutoCrop by Chromie](https://www.curseforge.com/wow/addons/autocrop) updated for WoW Classic Anniversary Edition.
 
 ## What it does
 
