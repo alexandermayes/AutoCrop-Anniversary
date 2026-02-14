@@ -1,5 +1,5 @@
 --saved variables
-if not AutoCropDB or AutoCropDB.version ~= "2.0" then
+if not AutoCropDB or AutoCropDB.version ~= "2.1" then
     AutoCropDB = { 
     autocropEnabled = true,
     legacyEnabled = false,
@@ -8,7 +8,7 @@ if not AutoCropDB or AutoCropDB.version ~= "2.0" then
     pvpEnabled = false,
     buttonEnabled = false,
     buttonScale = 1.0,
-    version = "2.0",
+    version = "2.1",
     trinketSlot = 13,
     normalHeadID = nil,
     normalTrinketID = nil,
@@ -271,7 +271,7 @@ f:SetScript('OnEvent', function(self, event, ...)
   --initialization
   if(event == "ADDON_LOADED") then
     local addon = ...
-    if addon == "AutoCrop" then
+    if addon == "AutoCrop-Anniversary" then
       AutoCropSearchInventory()
       AutoCropOnLoad()
     end
@@ -488,7 +488,7 @@ local function OnSlash(key, value, ...)
     AutoCropPrint("legacy - toggle between TBC riding gear and Classic riding gear. Values: 0/1 ("..(AutoCropDB.legacyEnabled and "1" or "0")..")")
     AutoCropPrint("button - settings for the button. Values: 0/1/reset/scale ("..(AutoCropDB.buttonEnabled and "1" or "0")..")")
     AutoCropPrint("reset - reset saved settings, please reload ui with /rl command afterwards!")
-    print("|cfffffcfcAuto|cff00ffffCrop|r ver."..AutoCropDB.version.." by |cff00ffffChromie|r-NethergardeKeep")
+    print("|cfffffcfcAuto|cff00ffffCrop|r ver."..AutoCropDB.version.." by |cff00ffffZev|r")
   end
 end
 

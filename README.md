@@ -15,7 +15,8 @@ AutoCrop automatically equips your Riding Crop (and other riding gear) when you 
 ## Changes from original
 
 - Updated bag API calls (`GetContainerNumSlots`, `GetContainerItemLink`, `GetContainerItemID`) to the `C_Container` namespace required by the Anniversary client
-- Updated `## Interface` version to `11508` for Anniversary Classic compatibility
+- Updated `## Interface` version to `50503` for TBC Anniversary Classic compatibility
+- Renamed TOC file to match `AutoCrop-Anniversary` folder name
 
 ## Slash commands
 
