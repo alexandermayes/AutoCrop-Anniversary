@@ -35,6 +35,12 @@ beltWatcher = false
 isDruid = false
 isFlying = false
 
+function AutoCropSafeEquip(itemID, slot)
+  if itemID then
+    EquipItemByName(itemID, slot)
+  end
+end
+
 function AutoCropInArray(value, myArray)
   if myArray == nil then
     return
@@ -110,27 +116,27 @@ function AutoCropEquipNormalSet()
   elseif(AutoCropDB.autocropEnabled) then
     local trinketID = GetInventoryItemID("player", AutoCropDB.trinketSlot)
     if(trinketID == AutoCropDB.ridingTrinketID or trinketID == 32481) then
-      EquipItemByName(AutoCropDB.normalTrinketID, AutoCropDB.trinketSlot)
+      AutoCropSafeEquip(AutoCropDB.normalTrinketID, AutoCropDB.trinketSlot)
     end
     if(AutoCropDB.gogglesEnabled) then
       local headID = GetInventoryItemID("player", 1)
       if(headID == AutoCropDB.gogglesID) then
-        EquipItemByName(AutoCropDB.normalHeadID, 1)
+        AutoCropSafeEquip(AutoCropDB.normalHeadID, 1)
       end
     end
     if(AutoCropDB.legacyEnabled) then
       local bootsID = GetInventoryItemID("player", 8)
       local glovesID = GetInventoryItemID("player", 10)
-      EquipItemByName(AutoCropDB.normalTrinketID, AutoCropDB.trinketSlot)
+      AutoCropSafeEquip(AutoCropDB.normalTrinketID, AutoCropDB.trinketSlot)
       if(bootsID == AutoCropDB.ridingBootsID) then
-        EquipItemByName(AutoCropDB.normalBootsID, 8)
+        AutoCropSafeEquip(AutoCropDB.normalBootsID, 8)
       end
       if(glovesID == AutoCropDB.ridingGlovesID) then
-        EquipItemByName(AutoCropDB.normalGlovesID, 10)
+        AutoCropSafeEquip(AutoCropDB.normalGlovesID, 10)
       end
     end
     if(AutoCropDB.swimmingEnabled) then
-      EquipItemByName(AutoCropDB.normalBeltID, 6)
+      AutoCropSafeEquip(AutoCropDB.normalBeltID, 6)
     end
     ridingGearEquipped = false
   end
@@ -147,14 +153,14 @@ function AutoCropEquipRidingSet()
   if(AutoCropDB.autocropEnabled) then
     if(AutoCropDB.legacyEnabled) then
       EquipItemByName(11122, AutoCropDB.trinketSlot)
-      EquipItemByName(AutoCropDB.ridingBootsID, 8)
-      EquipItemByName(AutoCropDB.ridingGlovesID, 10)
+      AutoCropSafeEquip(AutoCropDB.ridingBootsID, 8)
+      AutoCropSafeEquip(AutoCropDB.ridingGlovesID, 10)
     else
       if(AutoCropIsFlightForm() and isDruid) then
         EquipItemByName(32481, AutoCropDB.trinketSlot)
         isFlying = true
       else
-        EquipItemByName(AutoCropDB.ridingTrinketID, AutoCropDB.trinketSlot)
+        AutoCropSafeEquip(AutoCropDB.ridingTrinketID, AutoCropDB.trinketSlot)
       end
     end
     ridingGearEquipped = true
@@ -164,9 +170,9 @@ end
 function AutoCropEquipGoggles(zoneName)
   if(AutoCropDB.autocropEnabled and AutoCropDB.gogglesEnabled) then
     if((IsMounted() or AutoCropIsFlightForm()) and (zoneName == zones[1] or zoneName == zones[2] or zoneName == zones[3] or zoneName == zones[4])) then
-      EquipItemByName(AutoCropDB.gogglesID, 1)
+      AutoCropSafeEquip(AutoCropDB.gogglesID, 1)
     elseif(IsMounted() and not (zoneName == zones[1] or zoneName == zones[2] or zoneName == zones[3] or zoneName == zones[4])) then
-      EquipItemByName(AutoCropDB.normalHeadID, 1)
+      AutoCropSafeEquip(AutoCropDB.normalHeadID, 1)
     end
   end
 end
@@ -249,7 +255,7 @@ f:SetScript("OnUpdate", function()
   end
   local inInstance, instanceType = IsInInstance()
   if(AutoCropDB.autocropEnabled and isDruid and isFlying and not AutoCropIsFlightForm() and not inInstance) then
-    EquipItemByName(AutoCropDB.normalTrinketID, AutoCropDB.trinketSlot)
+    AutoCropSafeEquip(AutoCropDB.normalTrinketID, AutoCropDB.trinketSlot)
     isFlying = false
   end
   if(AutoCropDB.autocropEnabled and AutoCropDB.swimmingEnabled and not inInstance) then
@@ -260,7 +266,7 @@ f:SetScript("OnUpdate", function()
       end
       EquipItemByName(7052, 6)
     else
-      EquipItemByName(AutoCropDB.normalBeltID, 6)
+      AutoCropSafeEquip(AutoCropDB.normalBeltID, 6)
     end
   end
 end)
