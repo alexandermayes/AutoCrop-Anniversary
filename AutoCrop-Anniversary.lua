@@ -1,5 +1,5 @@
 --saved variables
-if not AutoCropDB or AutoCropDB.version ~= "2.1" then
+if not AutoCropDB or (AutoCropDB.version ~= "2.1" and AutoCropDB.version ~= "2.1.1") then
     AutoCropDB = { 
     autocropEnabled = true,
     legacyEnabled = false,
@@ -8,7 +8,7 @@ if not AutoCropDB or AutoCropDB.version ~= "2.1" then
     pvpEnabled = false,
     buttonEnabled = false,
     buttonScale = 1.0,
-    version = "2.1",
+    version = "2.1.1",
     trinketSlot = 13,
     normalHeadID = nil,
     normalTrinketID = nil,
